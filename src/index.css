@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Fraunces", "Georgia", serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --color-ink: #0a1628;
+  --color-ink-soft: #14233a;
+  --color-cream: #f7f3eb;
+  --color-cream-soft: #efeadf;
+  --color-bronze: #b8804a;
+  --color-bronze-dark: #8a5f37;
+  --color-stone: #6b7280;
+}
+
+html, body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+.serif { font-family: var(--font-serif); }
+
+.heading-display {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: var(--color-ink);
+  color: var(--color-cream);
+  padding: 0.9rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+}
+.btn-primary:hover {
+  background: var(--color-ink-soft);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-ink);
+  padding: 0.9rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--color-ink);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+}
+.btn-secondary:hover {
+  background: var(--color-ink);
+  color: var(--color-cream);
+}
+
+.input {
+  width: 100%;
+  background: white;
+  border: 1px solid #d4cdbe;
+  padding: 0.85rem 1rem;
+  font-size: 16px;
+  color: var(--color-ink);
+  transition: border-color 0.2s ease;
+}
+@media (min-width: 640px) {
+  .input { font-size: 0.95rem; }
+}
+.input:focus {
+  outline: none;
+  border-color: var(--color-ink);
+}
+
+.label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.02em;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(10, 22, 40, 0.08);
+}
