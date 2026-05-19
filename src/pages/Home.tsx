@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Building2, Home as HomeIcon, Briefcase, ShieldCheck, Clock, HandshakeIcon, MapPin, Store, Factory } from 'lucide-react'
+import { ArrowRight, Building2, Home as HomeIcon, Briefcase, ShieldCheck, Clock, HandshakeIcon, MapPin, Store } from 'lucide-react'
+import Reveal from '../components/Reveal'
 
 const HERO_RESIDENTIAL = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80&auto=format&fit=crop'
 const HERO_COMMERCIAL = 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80&auto=format&fit=crop'
@@ -67,17 +68,19 @@ export default function Home() {
       {/* Recently Funded Gallery */}
       <section className="bg-[var(--color-ink)] text-[var(--color-cream)]">
         <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-10 py-14 sm:py-16 lg:py-20">
-          <div className="grid lg:grid-cols-12 gap-6 sm:gap-8 mb-8 sm:mb-10 items-end">
-            <div className="lg:col-span-7">
-              <div className="eyebrow text-[var(--color-bronze)] mb-3 sm:mb-4">Recently Funded</div>
-              <h2 className="heading-display text-3xl sm:text-4xl lg:text-5xl">
-                Real deals. Real closes. Across the Pacific Northwest.
-              </h2>
+          <Reveal>
+            <div className="grid lg:grid-cols-12 gap-6 sm:gap-8 mb-8 sm:mb-10 items-end">
+              <div className="lg:col-span-7">
+                <div className="eyebrow text-[var(--color-bronze)] mb-3 sm:mb-4">Recently Funded</div>
+                <h2 className="heading-display text-3xl sm:text-4xl lg:text-5xl">
+                  Real deals. Real closes. Across the Pacific Northwest.
+                </h2>
+              </div>
+              <div className="lg:col-span-5 text-[var(--color-cream-soft)] opacity-80 text-sm leading-relaxed">
+                A snapshot of what we&rsquo;ve closed over the past 90 days. Property addresses redacted at borrower request.
+              </div>
             </div>
-            <div className="lg:col-span-5 text-[var(--color-cream-soft)] opacity-80 text-sm leading-relaxed">
-              A snapshot of what we&rsquo;ve closed over the past 90 days. Property addresses redacted at borrower request.
-            </div>
-          </div>
+          </Reveal>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -86,19 +89,21 @@ export default function Home() {
               { img: PROP_RE, type: 'Cash-Out Refi', amount: '$1.1M', loc: 'Seattle, WA', days: '9 days', cat: 'Real Estate' },
               { img: PROP_BRIDGE, type: 'Bridge Loan', amount: '$290,000', loc: 'Snohomish, WA', days: '7 days', cat: 'Real Estate' },
             ].map((p, i) => (
-              <div key={i} className="group">
-                <div className="aspect-[4/3] overflow-hidden mb-4 relative">
-                  <img src={p.img} alt={`${p.type} in ${p.loc}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute top-3 left-3 bg-[var(--color-ink)]/85 backdrop-blur-sm text-[10px] tracking-[0.15em] uppercase text-[var(--color-bronze)] px-2 py-1">{p.cat}</div>
+              <Reveal key={i} delay={i * 0.08}>
+                <div className="group">
+                  <div className="aspect-[4/3] overflow-hidden mb-4 relative">
+                    <img src={p.img} alt={`${p.type} in ${p.loc}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute top-3 left-3 bg-[var(--color-ink)]/85 backdrop-blur-sm text-[10px] tracking-[0.15em] uppercase text-[var(--color-bronze)] px-2 py-1">{p.cat}</div>
+                  </div>
+                  <div className="eyebrow text-[var(--color-bronze)] mb-2">{p.type}</div>
+                  <div className="serif text-xl sm:text-2xl font-medium mb-1">{p.amount}</div>
+                  <div className="text-xs sm:text-sm text-[var(--color-cream-soft)] opacity-70 flex flex-wrap items-center gap-x-2 gap-y-1">
+                    <span className="flex items-center gap-1"><MapPin size={12} /> {p.loc}</span>
+                    <span className="opacity-50">&middot;</span>
+                    <span>Closed in {p.days}</span>
+                  </div>
                 </div>
-                <div className="eyebrow text-[var(--color-bronze)] mb-2">{p.type}</div>
-                <div className="serif text-xl sm:text-2xl font-medium mb-1">{p.amount}</div>
-                <div className="text-xs sm:text-sm text-[var(--color-cream-soft)] opacity-70 flex flex-wrap items-center gap-x-2 gap-y-1">
-                  <span className="flex items-center gap-1"><MapPin size={12} /> {p.loc}</span>
-                  <span className="opacity-50">&middot;</span>
-                  <span>Closed in {p.days}</span>
-                </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -106,19 +111,21 @@ export default function Home() {
 
       {/* Who We Serve */}
       <section className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-10 py-16 sm:py-20 lg:py-24">
-        <div className="grid lg:grid-cols-12 gap-8 sm:gap-12 mb-10 sm:mb-14">
-          <div className="lg:col-span-5">
-            <div className="eyebrow text-[var(--color-bronze)] mb-3 sm:mb-4">Who We Serve</div>
-            <h2 className="heading-display text-3xl sm:text-4xl lg:text-5xl text-[var(--color-ink)]">
-              Three borrowers. One direct lender.
-            </h2>
+        <Reveal>
+          <div className="grid lg:grid-cols-12 gap-8 sm:gap-12 mb-10 sm:mb-14">
+            <div className="lg:col-span-5">
+              <div className="eyebrow text-[var(--color-bronze)] mb-3 sm:mb-4">Who We Serve</div>
+              <h2 className="heading-display text-3xl sm:text-4xl lg:text-5xl text-[var(--color-ink)]">
+                Three borrowers. One direct lender.
+              </h2>
+            </div>
+            <div className="lg:col-span-6 lg:col-start-7 flex items-end">
+              <p className="text-[var(--color-stone)] leading-relaxed">
+                We back real estate investors, commercial property owners, and operating businesses across the Pacific Northwest. If the deal makes sense, we make it work &mdash; bank-friendly or not.
+              </p>
+            </div>
           </div>
-          <div className="lg:col-span-6 lg:col-start-7 flex items-end">
-            <p className="text-[var(--color-stone)] leading-relaxed">
-              We back real estate investors, commercial property owners, and operating businesses across the Pacific Northwest. If the deal makes sense, we make it work &mdash; bank-friendly or not.
-            </p>
-          </div>
-        </div>
+        </Reveal>
 
         <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
           {[
@@ -143,23 +150,25 @@ export default function Home() {
               copy: 'Working capital, equipment, expansion, and bridge funding for businesses with real revenue and a real plan.',
               programs: ['Working Capital', 'Equipment Financing', 'Expansion / New Location', 'Inventory & Bridge']
             },
-          ].map(({ icon: Icon, eyebrow, title, copy, programs }) => (
-            <div key={eyebrow} className="bg-white border border-[rgba(10,22,40,0.08)] p-6 sm:p-8 hover:border-[var(--color-ink)] transition-colors group flex flex-col">
-              <div className="w-12 h-12 bg-[var(--color-cream-soft)] flex items-center justify-center mb-5">
-                <Icon size={22} className="text-[var(--color-bronze)]" strokeWidth={1.5} />
+          ].map(({ icon: Icon, eyebrow, title, copy, programs }, i) => (
+            <Reveal key={eyebrow} delay={i * 0.1}>
+              <div className="bg-white border border-[rgba(10,22,40,0.08)] p-6 sm:p-8 hover:border-[var(--color-ink)] transition-colors group flex flex-col h-full">
+                <div className="w-12 h-12 bg-[var(--color-cream-soft)] flex items-center justify-center mb-5">
+                  <Icon size={22} className="text-[var(--color-bronze)]" strokeWidth={1.5} />
+                </div>
+                <div className="eyebrow text-[var(--color-bronze)] mb-3">{eyebrow}</div>
+                <h3 className="serif text-lg sm:text-xl font-medium text-[var(--color-ink)] mb-3 leading-snug">{title}</h3>
+                <p className="text-sm text-[var(--color-stone)] leading-relaxed mb-5 flex-1">{copy}</p>
+                <div className="pt-4 border-t border-[rgba(10,22,40,0.08)]">
+                  <div className="text-[10px] tracking-[0.15em] uppercase text-[var(--color-stone)] mb-2">Programs</div>
+                  <ul className="space-y-1.5 text-xs text-[var(--color-ink)]">
+                    {programs.map(t => (
+                      <li key={t} className="flex items-start gap-2"><span className="text-[var(--color-bronze)]">&bull;</span>{t}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <div className="eyebrow text-[var(--color-bronze)] mb-3">{eyebrow}</div>
-              <h3 className="serif text-lg sm:text-xl font-medium text-[var(--color-ink)] mb-3 leading-snug">{title}</h3>
-              <p className="text-sm text-[var(--color-stone)] leading-relaxed mb-5 flex-1">{copy}</p>
-              <div className="pt-4 border-t border-[rgba(10,22,40,0.08)]">
-                <div className="text-[10px] tracking-[0.15em] uppercase text-[var(--color-stone)] mb-2">Programs</div>
-                <ul className="space-y-1.5 text-xs text-[var(--color-ink)]">
-                  {programs.map(t => (
-                    <li key={t} className="flex items-start gap-2"><span className="text-[var(--color-bronze)]">&bull;</span>{t}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -200,16 +209,18 @@ export default function Home() {
       {/* Philosophy */}
       <section className="bg-[var(--color-cream-soft)]">
         <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-10 py-16 sm:py-20 lg:py-24 text-center">
-          <div className="eyebrow text-[var(--color-bronze)] mb-4 sm:mb-5">Our Philosophy</div>
-          <h2 className="heading-display text-3xl sm:text-4xl lg:text-6xl text-[var(--color-ink)] mb-6 sm:mb-8 leading-tight">
-            Inclusive, <span className="italic">not exclusive</span>.
-          </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-[var(--color-stone)] leading-relaxed max-w-3xl mx-auto mb-4 sm:mb-5">
-            Every borrower starts with a conversation, not a checklist. We look at the deal in front of us and the operator standing behind it.
-          </p>
-          <p className="text-base sm:text-lg lg:text-xl text-[var(--color-stone)] leading-relaxed max-w-3xl mx-auto">
-            The loan we can&rsquo;t write today is often the relationship that brings us back the deal we want most tomorrow. No story too small. No situation too unusual. Bring us what you&rsquo;ve got.
-          </p>
+          <Reveal>
+            <div className="eyebrow text-[var(--color-bronze)] mb-4 sm:mb-5">Our Philosophy</div>
+            <h2 className="heading-display text-3xl sm:text-4xl lg:text-6xl text-[var(--color-ink)] mb-6 sm:mb-8 leading-tight">
+              Inclusive, <span className="italic">not exclusive</span>.
+            </h2>
+            <p className="text-base sm:text-lg lg:text-xl text-[var(--color-stone)] leading-relaxed max-w-3xl mx-auto mb-4 sm:mb-5">
+              Every borrower starts with a conversation, not a checklist. We look at the deal in front of us and the operator standing behind it.
+            </p>
+            <p className="text-base sm:text-lg lg:text-xl text-[var(--color-stone)] leading-relaxed max-w-3xl mx-auto">
+              The loan we can&rsquo;t write today is often the relationship that brings us back the deal we want most tomorrow. No story too small. No situation too unusual. Bring us what you&rsquo;ve got.
+            </p>
+          </Reveal>
         </div>
       </section>
 
@@ -249,21 +260,23 @@ export default function Home() {
       {/* CTA */}
       <section className="bg-[var(--color-cream-soft)] border-t border-[rgba(10,22,40,0.08)]">
         <div className="max-w-4xl mx-auto px-5 sm:px-6 lg:px-10 py-14 sm:py-16 lg:py-20 text-center">
-          <div className="eyebrow text-[var(--color-bronze)] mb-4 sm:mb-5">Ready When You Are</div>
-          <h2 className="heading-display text-3xl sm:text-4xl lg:text-5xl text-[var(--color-ink)] mb-5 sm:mb-6">
-            Tell us about your situation.
-          </h2>
-          <p className="text-[var(--color-stone)] mb-7 sm:mb-8 max-w-xl mx-auto">
-            Whether it&rsquo;s a property, a commercial deal, or a business that needs capital, we want to hear it. One business day to talk. Forty-eight hours to a term sheet.
-          </p>
-          <div className="flex flex-wrap gap-3 justify-center">
-            <Link to="/apply" className="btn-primary">
-              Start an Application <ArrowRight size={16} />
-            </Link>
-            <a href="tel:4258767192" className="btn-secondary">
-              Call (425) 876-7192
-            </a>
-          </div>
+          <Reveal>
+            <div className="eyebrow text-[var(--color-bronze)] mb-4 sm:mb-5">Ready When You Are</div>
+            <h2 className="heading-display text-3xl sm:text-4xl lg:text-5xl text-[var(--color-ink)] mb-5 sm:mb-6">
+              Tell us about your situation.
+            </h2>
+            <p className="text-[var(--color-stone)] mb-7 sm:mb-8 max-w-xl mx-auto">
+              Whether it&rsquo;s a property, a commercial deal, or a business that needs capital, we want to hear it. One business day to talk. Forty-eight hours to a term sheet.
+            </p>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <Link to="/apply" className="btn-primary">
+                Start an Application <ArrowRight size={16} />
+              </Link>
+              <a href="tel:4258767192" className="btn-secondary">
+                Call (425) 876-7192
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
     </>
